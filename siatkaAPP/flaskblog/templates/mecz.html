@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block content %}
+  <article class="media content-section">
+     <div class="media-body">
+      {% if current_user.is_authenticated %}
+      <h2 class="article-title">{{ mecz.druzyna1 }} - {{ mecz.druzyna2 }}</h2>
+      <p class="article-content">Data: {{ mecz.date }}</p>
+      <p class="article-content">Id meczu: {{ mecz.id }}</p>
+      {% else %}
+      <h2 class="article-title">{{ mecz.druzyna1 }} - {{ mecz.druzyna2 }}</h2>
+      <p class="article-content">Data: {{ mecz.date }}</p>
+      {% endif %}
+    {% if wynik%}
+      <h4>{{wynik1 }}:{{wynik2}}</h4>
+      <p>Set 1: {{wynik.set1_team1}}:{{wynik.set1_team2}}</p>
+      <p>Set 2: {{wynik.set2_team1}}:{{wynik.set2_team2}}</p>
+      <p>Set 3: {{wynik.set3_team1}}:{{wynik.set3_team2}}</p>
+      {% if test>0%}
+      <p>Set 4: {{wynik.set4_team1}}:{{wynik.set4_team2}}</p>
+      {%endif %}
+      {% if test>1%}
+      <p>Set 5: {{wynik.set5_team1}}:{{wynik.set5_team2}}</p>
+      {%endif%}
+    {% endif %}
+
+    {% if zaw11%}
+    <h3>Składy:</h3>
+    <h4>Druzyna {{mecz.druzyna1}}</h4>
+
+        <p>{{ zaw11.nazwisko }} {{ zaw11.imie }}</p>
+        <p>{{ zaw12.nazwisko }} {{ zaw12.imie }}</p>
+        <p>{{ zaw13.nazwisko }} {{ zaw13.imie }}</p>
+        <p>{{ zaw14.nazwisko }} {{ zaw14.imie }}</p>
+        <p>{{ zaw15.nazwisko }} {{ zaw15.imie }}</p>
+    {% endif %}
+    {% if zaw21 %}
+    <h4>Druzyna {{mecz.druzyna2}}</h4>
+            
+        <p>{{ zaw21.nazwisko }} {{ zaw21.imie }}</p>
+        <p>{{ zaw22.nazwisko }} {{ zaw22.imie }}</p>
+        <p>{{ zaw23.nazwisko }} {{ zaw23.imie }}</p>
+        <p>{{ zaw24.nazwisko }} {{ zaw24.imie }}</p>
+        <p>{{ zaw25.nazwisko }} {{ zaw25.imie }}</p>
+    {% endif %}
+     </div>
+  </article>
+{% endblock content %}

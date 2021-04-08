@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Mecze</h1>
+    {% for mecz in Mecze1 %}
+    
+        <article class="media content-section">
+            <h4><a class="article-title" href="{{ url_for('mecz', mecz_id=mecz.id) }}"> data {{ mecz.date}}. {{mecz.druzyna1}} - {{mecz.druzyna2}}</a></h4>
+
+        </article>
+    {% endfor %}
+{% endblock content %}

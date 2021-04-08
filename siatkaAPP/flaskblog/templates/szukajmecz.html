@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Wyszukane Mecze</h1>
+    {% for mecze in Mecze1 %}
+    <li>Id: {{ mecze.id}}.   Data {{mecze.date}} - {{mecze.druzyna1}} -  {{mecze.druzyna2}}</li>
+    {% endfor %}
+
+    {% for mecze in Mecze2 %}
+    <li>Id:  {{ mecze.id}}. Data {{mecze.date}} - {{mecze.druzyna1}} -  {{mecze.druzyna2}}</li>
+    {% endfor %}
+{% endblock content %}

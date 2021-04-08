@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block content %}
+  <article class="media content-section">
+     <div class="media-body">
+      
+      {% if current_user.is_authenticated %}
+      <h2 class="article-title">{{ druzyna.nazwa }} </h2>
+      <p class="article-content">Id drużyny: {{ druzyna.id }}</p>
+      {% else %}
+      <h2 class="article-title">{{ druzyna.nazwa }} </h2>
+      {% endif %}
+    
+    <h4>Członkowie druzyny:</h4>
+    {% if current_user.is_authenticated %}
+    {% for zawodnik in czlonkowie %}
+        <a class="nav-item nav-link" href="{{ url_for('zawodnik', zawodnik_id=zawodnik.id) }}">Id:{{ zawodnik.id}} {{ zawodnik.nazwisko}} {{zawodnik.imie}}</a>
+    {% endfor %}
+    {% else %}
+    {% for zawodnik in czlonkowie %}
+        <a class="nav-item nav-link" href="{{ url_for('zawodnik', zawodnik_id=zawodnik.id) }}">{{ zawodnik.nazwisko}} {{zawodnik.imie}}</a>
+    {% endfor %}
+    {% endif %}
+     </div>
+  </article>
+  <article class="media content-section">
+  <div class="media-body">
+    
+         <h2 class="lista meczy">Lista Meczy jako gospodarze:</h2>
+        
+        {% for mecz in mecze1%}
+        <a class="nav-item nav-link" href="{{ url_for('mecz', mecz_id=mecz.id) }}">{{ mecz.date }} {{ mecz.druzyna1 }} {{mecz.druzyna2}}</a>
+        
+        {% endfor %}
+        <h2 class="lista meczy">Lista Meczy jako goście:</h2>
+        {% for mecz in mecze2 %}
+        <a class="nav-item nav-link" href="{{ url_for('mecz', mecz_id=mecz.id) }}">{{ mecz.date }} {{ mecz.druzyna1 }} {{mecz.druzyna2}}</a>
+        {% endfor %}
+
+        </div>
+    </article>
+
+   
+{% endblock content %}
