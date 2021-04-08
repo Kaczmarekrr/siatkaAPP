@@ -1,2 +1,3 @@
 # siatkaAPP
-Prosta appka do zapisywania wyników meczów
+Simply web app for voleyball match results
+
